@@ -13,4 +13,5 @@ while True:
         print(f"Previous Hash:\t{block.prev_hash.hexdigest()}")
         print(f"Nonce:\t\t{block.nonce}")
         print(f"Data:\t\t{block.data}")
+        print(f"Created at:\t\t{block.created_at}")
         print("*" * 50)

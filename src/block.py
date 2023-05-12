@@ -1,6 +1,7 @@
 from __future__ import annotations
 import hashlib
 from typing import Any
+from datetime import datetime
 
 
 class Block:
@@ -9,6 +10,7 @@ class Block:
         self.prev_hash: hashlib._Hash = prev_hash
         self.nonce = 0
         self.data = data
+        self.created_at = datetime.now()
 
     def mine(self, difficulty: int) -> None:
         difficulty_constraint = 2 ** (256 - difficulty)
@@ -18,4 +20,4 @@ class Block:
             self.hash = hashlib.sha256(str(self).encode("utf-8"))
 
     def __str__(self) -> str:
-        return f"{self.prev_hash.hexdigest()}{self.nonce}{self.data}"
+        return f"{self.prev_hash.hexdigest()}{self.nonce}{self.data}{self.created_at}"

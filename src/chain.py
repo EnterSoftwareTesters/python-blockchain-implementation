@@ -17,6 +17,7 @@ class Chain:
         self.blocks.append(origin)
 
     def proof_of_work(self, block: Block):
+        hash = hashlib.sha256(str(block).encode("utf-8"))
         return (
             block.hash.hexdigest() == hash.hexdigest()
             and int(hash.hexdigest(), 16) < 2 ** (256 - self.difficulty)
